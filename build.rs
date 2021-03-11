@@ -4,10 +4,6 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    let ros_lib_x86_64_linux_gnu = if let Ok(path) = env::var("ROS_DISTRO") {
-    	format!("/opt/ros/{}/lib/x86_64-linux-gnu", path)
-    } else { "/opt/ros/foxy/lib/x86_64-linux-gnu".into() };
-    println!("cargo:rustc-link-search={}", ros_lib_x86_64_linux_gnu);
     println!("cargo:rustc-link-lib=ddsc");
     println!("cargo:rustc-link-lib=cdds-util");
     let incl_dir = if let Ok(path) = env::var("CYCLONE_INCLUDE") {
